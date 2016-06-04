@@ -1,0 +1,168 @@
+#!/bin/bash
+a0=零
+a1=一
+a2=二
+a3=三
+a4=四
+a5=五
+a6=六
+a7=七
+a8=八
+a9=九
+a10=十
+a11=百
+a12=千
+((sess=1876))
+((sess1=sess))
+b1=1
+while [ 1 ]
+do
+name=""
+a=`curl http://read.qidian.com/BookReader/0OAc8-pOJYI1.aspx`
+b1=$[ $sess/1000 ]
+sess=$[ $sess%1000 ]
+if (( $b1==1 ))
+then
+name=$a1$a12
+fi
+echo $sess
+b1=$[ $sess/100 ]
+sess=$[ $sess%100 ]
+if(( $b1==1 ))
+then
+name=$name$a1$11
+fi
+if(( $b1==2 ))
+then
+name=$name$a2$a11
+fi
+if(( $b1==3 ))
+then
+name=$name$a3$a11
+fi
+if(( $b1==4 ))
+then
+name=$name$a4$a11
+fi
+if(( $b1==5 ))
+then
+name=$name$a5$a11
+fi
+if(( $b1==6 ))
+then
+name=$name$a6$a11
+fi
+if(( $b1==7 ))
+then
+name=$name$a7$a10
+fi
+if(( $b1==8 ))
+then
+name=$name$a8$a11
+fi
+if(( $b1==9 ))
+then
+name=$name$a9$a11
+fi
+if(( $b1==0 ))
+then
+name=$name$a0
+fi
+b1=$[ $sess/10 ]
+sess=$[ $sess%10 ]
+if(( $b1==1 ))
+then
+name=$name$a1$10
+fi
+if(( $b1==2 ))
+then
+name=$name$a2$a10
+fi
+if(( $b1==3 ))
+then
+name=$name$a3$a10
+fi
+if(( $b1==4 ))
+then
+name=$name$a4$a10
+fi
+if(( $b1==5 ))
+then
+name=$name$a5$a10
+fi
+if(( $b1==6 ))
+then
+name=$name$a6$a10
+fi
+if(( $b1==7 ))
+then
+name=$name$a7$a10
+fi
+if(( $b1==8 ))
+then
+name=$name$a8$a10
+fi
+if(( $b1==9 ))
+then
+name=$name$a9$a10
+fi
+if(( $b1==0 ))
+then
+if(( $sess==0 ))
+then
+name=$name
+else
+name=$name$a0
+fi
+fi
+if(( $sess==1 ))
+then
+name=$name$a1
+fi
+if(( $sess==2 ))
+then
+name=$name$a2
+fi
+if(( $sess==3 ))
+then
+name=$name$a3
+fi
+if(( $sess==4 ))
+then
+name=$name$a4
+fi
+if(( $sess==5 ))
+then
+name=$name$a5
+fi
+if(( $sess==6 ))
+then
+name=$name$a6
+fi
+if(( $sess==7 ))
+then
+name=$name$a7
+fi
+if(( $sess==8 ))
+then
+name=$name$a8
+fi
+if(( $sess==9 ))
+then
+name=$name$a9
+fi
+if(( $sess==0 ))
+then
+name=$name
+fi
+if [[ $a =~ "第$name" ]]
+then
+echo $name | sendmail -s "w" -r root@cesing.net.cn 1162009351@qq.com
+sess=$[ $sess1+1 ]
+sess1=$[ $sess1+1 ]
+else
+sess=$sess1
+fi
+echo $name
+sleep 180
+done
