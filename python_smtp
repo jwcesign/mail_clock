@@ -1,0 +1,40 @@
+# -*- coding: utf-8 -*-
+import sys
+from email import encoders
+from email.header import Header
+from email.mime.text import MIMEText
+from email.utils import parseaddr, formataddr
+import smtplib
+
+name=sys.argv[1]
+sex=sys.argv[2]
+age=sys.argv[3]
+phone=sys.argv[4]
+pro=sys.argv[5]
+timebe=sys.argv[6]
+time=sys.argv[7]
+pos=sys.argv[8]
+mon=sys.argv[9]
+
+def _format_addr(s):
+    name, addr = parseaddr(s)
+    return formataddr(( \
+        Header(name, 'utf-8').encode(), \
+        addr.encode('utf-8') if isinstance(addr, unicode) else addr))
+
+from_addr = '15968174203@163.com'
+password = 'kali333333'
+to_addr = '1162009351@qq.com'
+smtp_server = 'smtp.163.com'
+
+fi='名字:'+name+'\n'+'性别:'+sex+'\n年龄:'+age+'\n电话:'+phone+'\n项目:'+pro+'\n课程段:'+timebe+'\n上课时间:'+time+'\n上课地点:'+pos+'\n费用:'+mon
+msg = MIMEText(fi, 'plain', 'utf-8')
+msg['From'] = _format_addr(u'cesign <%s>' % from_addr)
+msg['To'] = _format_addr(u'cesign <%s>' % to_addr)
+msg['Subject'] = Header(u'爱博体育报名', 'utf-8').encode()
+
+server = smtplib.SMTP(smtp_server, 25)
+server.set_debuglevel(1)
+server.login(from_addr, password)
+server.sendmail(from_addr, [to_addr], msg.as_string())
+server.quit()
