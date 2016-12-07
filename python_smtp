@@ -1,3 +1,4 @@
+#!/usr/bin/python
 # -*- coding: utf-8 -*-
 import sys
 from email import encoders
@@ -24,7 +25,7 @@ def _format_addr(s):
 
 from_addr = '15968174203@163.com'
 password = 'kali333333'
-to_addr = '1162009351@qq.com'
+to_addr = '875567115@qq.com'
 smtp_server = 'smtp.163.com'
 
 fi='名字:'+name+'\n'+'性别:'+sex+'\n年龄:'+age+'\n电话:'+phone+'\n项目:'+pro+'\n课程段:'+timebe+'\n上课时间:'+time+'\n上课地点:'+pos+'\n费用:'+mon
