@@ -39,3 +39,13 @@ server.set_debuglevel(1)
 server.login(from_addr, password)
 server.sendmail(from_addr, [to_addr], msg.as_string())
 server.quit()
+
+
+
+
+
+<?php
+        $m='./test.py cesign nan 23 15555555 swim summer 5.20-6.20 hangzhou 9000';
+        $a=system($m);
+        echo $a;
+?>
